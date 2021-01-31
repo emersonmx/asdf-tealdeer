@@ -65,7 +65,8 @@ install_version() {
     local tool_cmd
     tool_cmd="$(echo "tldr --help" | cut -d' ' -f1)"
     tool_path="$install_path/$tool_cmd"
-    chmod +x $tool_path
+    chmod +x "$release_file"
+    mv -f "$release_file" "$tool_path"
 
     echo "tealdeer $version installation was successful!"
   ) || (
