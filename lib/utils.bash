@@ -59,7 +59,7 @@ install_version() {
 
   local release_file="$install_path/tealdeer-$version"
   (
-    mkdir -p "$install_path"
+    mkdir -p "$install_path/bin"
     download_release "$version" "$release_file"
 
     local tool_cmd
