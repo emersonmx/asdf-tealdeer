@@ -57,16 +57,17 @@ install_version() {
     fail "asdf-tealdeer supports release installs only"
   fi
 
-  local release_file="$install_path/tealdeer-$version"
+  local release_file="$install_path/bin/tealdeer-$version"
   (
     mkdir -p "$install_path"
     download_release "$version" "$release_file"
 
     local tool_cmd
     tool_cmd="$(echo "tldr --help" | cut -d' ' -f1)"
-    tool_path="$install_path/$tool_cmd"
-    chmod +x "$release_file"
+    tool_path="$install_path/bin/$tool_cmd"
     mv -f "$release_file" "$tool_path"
+    chmod +x "$tool_path"
+    test -x "$tool_path" || fail "Expected $install_path/$tool_cmd-${platform} to be executable."
 
     echo "tealdeer $version installation was successful!"
   ) || (
