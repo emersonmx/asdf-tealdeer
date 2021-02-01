@@ -67,7 +67,7 @@ install_version() {
     tool_path="$install_path/bin/$tool_cmd"
     mv -f "$release_file" "$tool_path"
     chmod +x "$tool_path"
-    test -x "$tool_path" || fail "Expected $install_path/$tool_cmd-${platform} to be executable."
+    test -x "$tool_path" || fail "Expected $install_path/$tool_cmd to be executable."
 
     echo "tealdeer $version installation was successful!"
   ) || (
