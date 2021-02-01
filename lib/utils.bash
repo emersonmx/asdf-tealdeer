@@ -65,6 +65,7 @@ install_version() {
     local tool_cmd
     tool_cmd="$(echo "tldr --help" | cut -d' ' -f1)"
     tool_path="$install_path/bin/$tool_cmd"
+    mkdir -p "$install_path/bin"
     mv -f "$release_file" "$tool_path"
     chmod +x "$tool_path"
     test -x "$tool_path" || fail "Expected $install_path/$tool_cmd-${platform} to be executable."
